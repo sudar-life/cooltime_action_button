@@ -30,6 +30,7 @@ class _CoolTimeButtonState extends State<CoolTimeButton>
   AnimationController animationController;
   Animation<double> animation;
   double _progress = 0;
+  String skillName = "";
   @override
   void initState() {
     animationController = AnimationController(
@@ -48,7 +49,21 @@ class _CoolTimeButtonState extends State<CoolTimeButton>
           );
         },
       );
+    _setSkillName();
     super.initState();
+  }
+
+  void _setSkillName() {
+    switch (widget.type) {
+      case ButtonType.IDLE:
+        break;
+      case ButtonType.SKILL1:
+        skillName = "skill1";
+        break;
+      case ButtonType.SKILL2:
+        skillName = "skill2";
+        break;
+    }
   }
 
   void _changeState(bool state) {
@@ -71,7 +86,6 @@ class _CoolTimeButtonState extends State<CoolTimeButton>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
       child: GestureDetector(
         onTap: _actionButton,
         child: ClipRRect(
@@ -82,14 +96,7 @@ class _CoolTimeButtonState extends State<CoolTimeButton>
             height: widget.buttonSize.height,
             child: Container(
               color: Colors.grey.withOpacity(0.4),
-              child: Center(
-                child: Text(
-                  widget.buttonName,
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+              child: Image.asset("assets/$skillName.jpg", fit: BoxFit.fitWidth),
             ),
           ),
         ),
