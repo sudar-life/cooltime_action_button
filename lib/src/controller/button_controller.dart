@@ -1,16 +1,14 @@
 import 'dart:async';
 
-class ButtonController {
-  final StreamController<ButtonType> _actionButtonSubject =
-      StreamController<ButtonType>();
-  Stream<ButtonType> get actionButtonStream => _actionButtonSubject.stream;
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
+
+class ButtonController extends GetxController {
+  static ButtonController get to => Get.find();
+  Rx<ButtonType> actionButton = ButtonType.ACTION1.obs;
 
   action(ButtonType type) {
-    _actionButtonSubject.sink.add(type);
-  }
-
-  dispose() {
-    _actionButtonSubject.close();
+    actionButton(type);
   }
 }
 

@@ -50,7 +50,7 @@ class _CoolTimeButtonState extends State<CoolTimeButton>
     if (isActive) {
       _changeState(false);
       animationController.forward(from: 0);
-      buttonController.action(ButtonType.ACTION1);
+      ButtonController.to.action(ButtonType.ACTION1);
     }
   }
 
