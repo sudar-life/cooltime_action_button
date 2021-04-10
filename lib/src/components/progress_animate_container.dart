@@ -41,15 +41,15 @@ class ProgressAnimatePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     var paint = Paint();
 
-    paint.color = Colors.grey.withOpacity(0.8);
+    paint.color = Colors.black.withOpacity(0.8);
     paint.style = PaintingStyle.fill;
     paint.strokeWidth = 1;
 
     Offset center = Offset(size.width / 2, size.height / 2);
-    double arcAngle = 2 * pi * (progress);
+    double arcAngle = 2 * pi * (1 - progress);
 
     canvas.drawArc(Rect.fromCircle(center: center, radius: 100), -pi / 2,
-        arcAngle, true, paint);
+        -1 * arcAngle, true, paint);
   }
 
   @override
