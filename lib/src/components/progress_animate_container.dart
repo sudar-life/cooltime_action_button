@@ -6,30 +6,26 @@ class ProgressAnimateContainer extends StatelessWidget {
   final double progress;
   final double width;
   final double height;
-  ProgressAnimateContainer({Key key, this.progress, this.width, this.height})
-      : super(key: key);
+  final Widget child;
+  ProgressAnimateContainer({
+    Key key,
+    this.progress,
+    this.width,
+    this.height,
+    this.child,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: this.width,
       height: this.height,
-      child: CustomPaint(
-        painter: ProgressAnimatePainter(progress),
-        child: Container(
-          width: 100,
-          height: 100,
-          color: Colors.grey.withOpacity(0.4),
-          child: Center(
-            child: Text(
-              "BUTTON",
-              style: TextStyle(
-                color: Colors.black,
-              ),
+      child: progress == 0
+          ? child
+          : CustomPaint(
+              painter: ProgressAnimatePainter(progress),
+              child: child,
             ),
-          ),
-        ),
-      ),
     );
   }
 }

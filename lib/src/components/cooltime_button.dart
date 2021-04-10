@@ -61,12 +61,26 @@ class _CoolTimeButtonState extends State<CoolTimeButton>
       child: GestureDetector(
         onTap: _actionButton,
         child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: ProgressAnimateContainer(
-              progress: _progress,
+          borderRadius: BorderRadius.circular(10),
+          child: ProgressAnimateContainer(
+            progress: _progress,
+            width: 100,
+            height: 100,
+            child: Container(
               width: 100,
               height: 100,
-            )),
+              color: Colors.grey.withOpacity(0.4),
+              child: Center(
+                child: Text(
+                  "BUTTON",
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }
