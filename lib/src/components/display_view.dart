@@ -10,21 +10,33 @@ class DisplayView extends GetView<ButtonController> {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
+      Widget view = Container();
       switch (controller.actionButton.value) {
-        case ButtonType.ACTION1:
-          count++;
+        case ButtonType.SKILL1:
+          view = Container(
+            width: 300,
+            height: 300,
+            child: Image.asset("assets/skill1.gif"),
+          );
           break;
-        case ButtonType.ACTION2:
-          count--;
+        case ButtonType.SKILL2:
+          view = Container(
+            width: 300,
+            height: 300,
+            child: Image.asset("assets/skill2.gif"),
+          );
+          break;
+        case ButtonType.IDLE:
+          view = Container(
+            width: 200,
+            height: 200,
+            child: Image.asset("assets/idle.gif"),
+          );
+          // TODO: Handle this case.
           break;
       }
 
-      return Container(
-        child: Text(
-          count.toString(),
-          style: TextStyle(fontSize: 100),
-        ),
-      );
+      return Container(child: view);
     });
   }
 }

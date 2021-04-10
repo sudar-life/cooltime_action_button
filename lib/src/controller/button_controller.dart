@@ -5,11 +5,11 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 
 class ButtonController extends GetxController {
   static ButtonController get to => Get.find();
-  Rx<ButtonType> actionButton = ButtonType.ACTION1.obs;
+  Rx<ButtonType> actionButton = ButtonType.IDLE.obs;
 
   action(ButtonType type) {
     actionButton(type);
   }
 }
 
-enum ButtonType { ACTION1, ACTION2 }
+enum ButtonType { IDLE, SKILL1, SKILL2 }

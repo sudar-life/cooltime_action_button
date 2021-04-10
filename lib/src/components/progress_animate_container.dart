@@ -3,10 +3,12 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ProgressAnimateContainer extends StatelessWidget {
+  final Widget child;
   final double progress;
   final double width;
   final double height;
-  ProgressAnimateContainer({Key key, this.progress, this.width, this.height})
+  ProgressAnimateContainer(
+      {Key key, this.progress, this.width, this.height, this.child})
       : super(key: key);
 
   @override
@@ -16,19 +18,7 @@ class ProgressAnimateContainer extends StatelessWidget {
       height: this.height,
       child: CustomPaint(
         painter: ProgressAnimatePainter(progress),
-        child: Container(
-          width: 100,
-          height: 100,
-          color: Colors.grey.withOpacity(0.4),
-          child: Center(
-            child: Text(
-              "BUTTON",
-              style: TextStyle(
-                color: Colors.black,
-              ),
-            ),
-          ),
-        ),
+        child: child,
       ),
     );
   }
